@@ -30,6 +30,12 @@ The documentation is organized into the following two sections:
 
 .. toctree::
    :maxdepth: 2
+   :caption: Reference Atlas
+
+   reference_details.rst
+
+.. toctree::
+   :maxdepth: 2
    :caption: Workflow Details
 
    detail.rst

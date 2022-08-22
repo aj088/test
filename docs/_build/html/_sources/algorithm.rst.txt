@@ -19,12 +19,12 @@ In SnapATAC2, we reformulate this approach as spectral embedding, *a.k.a.*, Lapl
 Spectral embedding
 ------------------
 
-Start with nxp cell by feature count matrix $M$, we first compute the
+Start with nxp cell by feature count matrix M, we first compute the
 nxn pairwise similarity matrix S.
 
 We then compute the normalized graph Laplacian
 
-The eigenvectors correspond to the k+1-smallest eigenvalues of $L$ are selected as
+The eigenvectors correspond to the k+1-smallest eigenvalues of L are selected as
 the lower dimensional embedding.
 
 Nyström method

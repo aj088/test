@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pipeline Overview &mdash; test test documentation</title>
+  <title>Prepare Reference Atlas &mdash; test test documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dimension reduction Cited from SNAPATAC2" href="algorithm.html" />
-    <link rel="prev" title="Installation" href="install.html" /> 
+    <link rel="prev" title="Reference Atlas" href="reference_details.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,9 +41,18 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Reference Atlas</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference_details.html">Reference Atlas</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Workflow Details</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Pipeline Overview</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Prepare Reference Atlas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#human-atlas">Human Atlas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mouse-atlas">Mouse Atlas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#pipeline-overview">Pipeline Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#original-input">Original Input</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#intermediate-output">Intermediate Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#final-output">Final Output</a></li>
@@ -74,7 +83,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Pipeline Overview</li>
+      <li>Prepare Reference Atlas</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/detail.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -84,10 +93,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pipeline-overview">
+  <section id="prepare-reference-atlas">
+<h1>Prepare Reference Atlas<a class="headerlink" href="#prepare-reference-atlas" title="Permalink to this headline"></a></h1>
+<section id="human-atlas">
+<h2>Human Atlas<a class="headerlink" href="#human-atlas" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>Select adult cells</p></li>
+<li><p>Down sample cell numbers to ~80K high quality cells</p></li>
+<li><p>Select cell-type specific peaks (~ 430K peaks)</p>
+<blockquote>
+<div><figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/umap_human_reference.png"><img alt="UMAP of Human scATAC Reference Atlas" src="_images/umap_human_reference.png" style="width: 604.1999999999999px; height: 257.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">Perform dimensionality reduction using spectral embedding, visualize annotation on UMAP</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="mouse-atlas">
+<h2>Mouse Atlas<a class="headerlink" href="#mouse-atlas" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>Remove unknown cell types</p></li>
+<li><p>Use 100,000 cells and 400,000 potential regulatory elements</p>
+<blockquote>
+<div><figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/umap_mouse_reference.png"><img alt="UMAP of Mouse scATAC Reference Atlas" src="_images/umap_mouse_reference.png" style="width: 738.6px; height: 257.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">Perform dimensionality reduction using spectral embedding, visualize annotation on UMAP</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+<section id="pipeline-overview">
 <h1>Pipeline Overview<a class="headerlink" href="#pipeline-overview" title="Permalink to this headline"></a></h1>
-<p>For more details, please see out following publication:</p>
-<p><a class="reference external" href="http://">http://</a></p>
+<p>The conceptual idea and schematic of scATAC annotation is illustrated here.</p>
+<blockquote>
+<div><figure class="align-center">
+<a class="reference internal image-reference" href="_images/workflow.png"><img alt="Workflow of scATAC Annotation" src="_images/workflow.png" style="width: 828.0px; height: 468.0px;" /></a>
+</figure>
+</div></blockquote>
 <section id="original-input">
 <h2>Original Input<a class="headerlink" href="#original-input" title="Permalink to this headline"></a></h2>
 <p>The following files are needed to run <em>Celltype Annotation</em> on your own experiment:</p>
@@ -95,13 +144,14 @@
 <li><p><em>fragments.tsv.gz</em> files with fragments for each scATAC sample</p></li>
 <li><p><em>fragments.tsv.gz.tbi</em> files with fragments index information for each scATAC sample</p></li>
 <li><p><em>cell barcodes</em> files with high quality cells for each scATAC sample</p></li>
+<li><p><em>cell-type specific peak</em> file obtained from human reference atlas paper</p></li>
 <li><p>Optionally: <em>UMAP</em> or <em>tSNE</em> projection file from each sample</p></li>
 </ul>
 <p>Currently, this package only supports hg38 reference mapping</p>
 </section>
 <section id="intermediate-output">
 <h2>Intermediate Output<a class="headerlink" href="#intermediate-output" title="Permalink to this headline"></a></h2>
-<p>The following files are intermediate outputs of <em>Celltype Annotation</em> using FeatureMatrix function in Seurat:</p>
+<p>The following files are intermediate outputs of <em>Celltype Annotation</em> to obtain cell-type specific peak by cell matrix:</p>
 <ul class="simple">
 <li><p><em>matrix.mtx</em> Sparse matrix files with fragment reads</p></li>
 <li><p><em>peaks.tsv</em> Cell-type restricted peaks</p></li>
@@ -123,7 +173,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reference_details.html" class="btn btn-neutral float-left" title="Reference Atlas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="algorithm.html" class="btn btn-neutral float-right" title="Dimension reduction Cited from SNAPATAC2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
