@@ -19,11 +19,19 @@ The following files are needed to run *Celltype Annotation* on your own experime
 Currently, this package only supports hg38 reference mapping
 
 
-Output
-------------------
+Intermediate Output
+--------------------
 
-The following files are output of the first step of *Celltype Annotation* using FeatureMatrix function in Seurat:
+The following files are intermediate outputs of *Celltype Annotation* using FeatureMatrix function in Seurat:
 
 - *matrix.mtx* Sparse matrix files with fragment reads
 - *peaks.tsv* Cell-type restricted peaks
 - *cell.tsv* High quality cells, the same cells as input
+
+Final Output
+--------------------
+The following files are final outputs of *Celltype Annotation* using the annotation tool:
+
+- *merged.h5ad* anndata of integrated query and reference cells 
+- *prediction.tsv* Cell-type prediction of query cells
+- *uncertainty_score.tsv* Uncertainty score of cel-type prediction
