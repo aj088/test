@@ -89,7 +89,8 @@
              
   <section id="dimension-reduction">
 <h1>Dimension reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this headline"></a></h1>
-<p>[^Fang_2021]: Fang, R., Preissl, S., Li, Y. et al. Comprehensive analysis of single cell ATAC-seq data with SnapATAC. Nat Commun 12, 1337 (2021). <a class="reference external" href="https://doi.org/10.1038/s41467-021-21583-9">https://doi.org/10.1038/s41467-021-21583-9</a></p>
+<p>Cited from
+[Fang_2021]: Fang, R., Preissl, S., Li, Y. et al. Comprehensive analysis of single cell ATAC-seq data with SnapATAC. Nat Commun 12, 1337 (2021). <a class="reference external" href="https://doi.org/10.1038/s41467-021-21583-9">https://doi.org/10.1038/s41467-021-21583-9</a></p>
 <p>Single-cell ATAC-seq (scATAC-seq) produces large and highly sparse cell by feature count matrix.
 Working directly with such a large matrix is very inconvinent and computational intensive.
 Therefore typically, we need to reduce the dimensionality of the count matrix before
@@ -124,41 +125,6 @@ we used the Nystrom method to perform a low-rank approximation of the full
 similarity matrix.</p>
 <p>We will be focusing on generating an approximation $tilde{S}$ of $S$ based on
 a sample of $l ≪ n$ of its columns.</p>
-<p>Suppose
-$S = begin{bmatrix}
-A &amp; B\
-B^T &amp; C
-end{bmatrix}$
-and columns $begin{bmatrix} A \ B^T end{bmatrix}$ are our samples.
-We first perform eigendecomposition on $A = U Lambda U^T$.
-The nystrom method approximates the eigenvectors of matrix $S$ by
-$tilde{U} = begin{bmatrix}
-U \
-B^T U Lambda^{-1}
-end{bmatrix}$.</p>
-<p>We can then compute $tilde{S}$:</p>
-<p>$$
-begin{align*}
-tilde{S} &amp;= tilde{U} Lambda tilde{U}^T \
-&amp;= begin{bmatrix}
-U \
-B^T U Lambda^{-1}
-end{bmatrix}Lambdabegin{bmatrix}U^T &amp; Lambda^{-1}U^TB end{bmatrix} \
-&amp;= begin{bmatrix}
-ULambda U^T &amp; U Lambda Lambda^{-1} U^T B \
-B^T U Lambda^{-1} Lambda U^T &amp; B^T U Lambda^{-1} Lambda Lambda^{-1} U^T B
-end{bmatrix} \
-&amp;= begin{bmatrix}
-A &amp; B \
-B^T &amp; B^T U Lambda^{-1} U^T Bend{bmatrix}
-end{align*}
-$$</p>
-<p>In practice, $tilde{S}$ does not need to be computed.
-Instead, it is used implicitly to estimate the degree normalization vector:</p>
-<p>$$
-tilde{d} = tilde{S}mathbf{1} = begin{bmatrix}Amathbf{1} + Bmathbf{1} \ B^T mathbf{1} + B^T A^{-1} Bmathbf{1}
-end{bmatrix}
-$$</p>
 </section>
 </section>
 <section id="cell-type-assignment">
@@ -167,7 +133,7 @@ $$</p>
 <section id="k-nearest-neighorbors">
 <h2>K-nearest neighorbors<a class="headerlink" href="#k-nearest-neighorbors" title="Permalink to this headline"></a></h2>
 <blockquote>
-<div><p>what is KNN?XXXX</p>
+<div><p>what is KNN?</p>
 </div></blockquote>
 </section>
 <section id="weighted-knn">

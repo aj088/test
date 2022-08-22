@@ -1,7 +1,7 @@
 Dimension reduction
 ===================
-
-[^Fang_2021]: Fang, R., Preissl, S., Li, Y. et al. Comprehensive analysis of single cell ATAC-seq data with SnapATAC. Nat Commun 12, 1337 (2021). https://doi.org/10.1038/s41467-021-21583-9
+Cited from
+[Fang_2021]: Fang, R., Preissl, S., Li, Y. et al. Comprehensive analysis of single cell ATAC-seq data with SnapATAC. Nat Commun 12, 1337 (2021). https://doi.org/10.1038/s41467-021-21583-9
 
 
 Single-cell ATAC-seq (scATAC-seq) produces large and highly sparse cell by feature count matrix.
@@ -46,46 +46,6 @@ similarity matrix.
 We will be focusing on generating an approximation $\tilde{S}$ of $S$ based on
 a sample of $l ≪ n$ of its columns.
 
-Suppose
-$S = \begin{bmatrix}
-A & B\\
-B^T & C
-\end{bmatrix}$
-and columns $\begin{bmatrix} A \\ B^T \end{bmatrix}$ are our samples.
-We first perform eigendecomposition on $A = U \Lambda U^T$.
-The nystrom method approximates the eigenvectors of matrix $S$ by
-$\tilde{U} = \begin{bmatrix}
-U \\
-B^T U \Lambda^{-1}
-\end{bmatrix}$.
-
-We can then compute $\tilde{S}$:
-
-$$
-\begin{align*}
-\tilde{S} &= \tilde{U} \Lambda \tilde{U}^T \\
-&= \begin{bmatrix}
-U \\
-B^T U \Lambda^{-1}
-\end{bmatrix}\Lambda\begin{bmatrix}U^T & \Lambda^{-1}U^TB \end{bmatrix} \\
-&= \begin{bmatrix}
-U\Lambda U^T & U \Lambda \Lambda^{-1} U^T B \\
-B^T U \Lambda^{-1} \Lambda U^T & B^T U \Lambda^{-1} \Lambda \Lambda^{-1} U^T B
-\end{bmatrix} \\
-&= \begin{bmatrix}
-A & B \\
-B^T & B^T U \Lambda^{-1} U^T B\end{bmatrix}
-\end{align*}
-$$
-
-In practice, $\tilde{S}$ does not need to be computed.
-Instead, it is used implicitly to estimate the degree normalization vector:
-
-$$
-\tilde{d} = \tilde{S}\mathbf{1} = \begin{bmatrix}A\mathbf{1} + B\mathbf{1} \\ B^T \mathbf{1} + B^T A^{-1} B\mathbf{1}
-\end{bmatrix}
-$$
-
 
 Cell-type Assignment
 =====================
@@ -95,7 +55,7 @@ Weighted K-nearest neighorbors
 
 K-nearest neighorbors
 ---------------------
- what is KNN?XXXX
+ what is KNN?
 
 Weighted knn
 -----------------
